@@ -86,6 +86,13 @@ public class Player : MonoBehaviour
             isJumping = false;
             anim.SetBool("jump", false);
         }
+
+        if (collision.gameObject.tag == "Spike") //o layer foi criado no ground e ticado no mesmo o layer criado "8"
+        {
+            GameControler.instance.ShowGameOver();
+
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
