@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rig;  //rigidbody tem classe e método pronto pra fazer o pulo
 
+    bool isBlowing;
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump")) //jump por padrão configurado na tecla space
+        if (Input.GetButtonDown("Jump") && !isBlowing) //jump por padrão configurado na tecla space
         {
             if (!isJumping)
             {
@@ -93,6 +95,15 @@ public class Player : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.tag == "Saw") //o layer foi criado no ground e ticado no mesmo o layer criado "8"
+        {
+            GameControler.instance.ShowGameOver();
+
+            Destroy(gameObject);
+        }
+
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -101,6 +112,21 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 8) //o layer foi criado no ground e ticado no mesmo o layer criado "8"
         {
             isJumping = true;
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        //vai usar triger por a maça estar com in trigger ticado
+        if (collision.gameObject.layer == 11)
+        {
+            isBlowing = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 11)
+        {
+            isBlowing = false;
         }
     }
 }
