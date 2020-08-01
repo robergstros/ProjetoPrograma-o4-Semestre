@@ -33,4 +33,9 @@ public class GameControler : MonoBehaviour
     {
         SceneManager.LoadScene(lvlName);
     }
+
+    public void CarregarFase1(string lvlName)
+    {
+        SceneManager.LoadScene("Fase1");
+    }
 }
