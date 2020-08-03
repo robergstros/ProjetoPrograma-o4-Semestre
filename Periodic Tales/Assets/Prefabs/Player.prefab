@@ -129,7 +129,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1d7acfac0b66a0949b3da8f4e273ea8c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1df9122b1c46404e966c699b5861cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 7
   JumpForce: 8
   isJumping: 0
   doubleJumping: 0
@@ -182,6 +182,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0006931058, y: -0.08124787}
+  m_Offset: {x: 0.0041957856, y: -0.02911301}
   serializedVersion: 2
-  m_Radius: 0.078223154
+  m_Radius: 0.13286604

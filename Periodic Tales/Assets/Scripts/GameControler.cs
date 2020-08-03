@@ -38,4 +38,5 @@ public class GameControler : MonoBehaviour
     {
         SceneManager.LoadScene("Fase1");
     }
+
 }
