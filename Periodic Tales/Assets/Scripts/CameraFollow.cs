@@ -5,20 +5,43 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform target;
-    public float smothSpeed = 1f;
+    public float speed = 0.15f;
 
-    // Start is called before the first frame update
-    void Start()
+    private Transform target;
+
+    public bool maxMin;
+    public float xMin;
+    public float yMin;
+    public float xMax;
+    public float yMax;
+
+    private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        Vector3 startPosition = new Vector3(target.position.x, target.position.y, -1f);
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, startPosition, smothSpeed);
-        transform.position = smoothPosition;
+        if (target)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.position, speed) + new Vector3(0, 0, target.position.z);
+            if (maxMin)
+            {
+                transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax), 2 * target.position.z);
+            }
+        }
     }
+
+    //[SerializeField] // serve para poder modificar o parametro privado no inspetor da unity
+    // private Vector3 offset;
+    //[Range(0,1)]
+    //public float suavidade = 0.2f;
+    //public Transform jogador;
+
+    // private void FixedUpdate()
+    // {
+    // transform.position = Vector3.Lerp(transform.position, jogador.position + offset, suavidade);
+    //  transform.LookAt(jogador);
+    // }
+
 }
